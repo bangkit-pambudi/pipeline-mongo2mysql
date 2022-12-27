@@ -43,7 +43,7 @@ download_mongo = BashOperator(
 
 copy_json = BashOperator(
         task_id='copy_json',
-        bash_command="docker cp 7ef72c48fc0e:/vaksin.json '/mnt/c/diary ngoding/Test Telkom/pipeline mongo to mysql/JsonOutput'",
+        bash_command="docker cp 7ef72c48fc0e:/vaksin.json '/mnt/c/diary ngoding/codex/pipeline mongo to mysql/JsonOutput'",
         trigger_rule = 'all_done',
         dag=dag
     )
