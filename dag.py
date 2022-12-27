@@ -50,7 +50,7 @@ copy_json = BashOperator(
 
 run_tomysql = BashOperator(
         task_id='run_tomysql',
-        bash_command="python3 '/mnt/c/diary ngoding/Test Telkom/pipeline mongo to mysql/run.py'",
+        bash_command="python3 '/mnt/c/diary ngoding/codex/pipeline mongo to mysql/run.py'",
         trigger_rule = 'all_success',
         dag=dag
     )
