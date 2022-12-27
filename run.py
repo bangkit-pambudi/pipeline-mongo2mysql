@@ -7,7 +7,7 @@ import sqlalchemy as sa
 import mysql.connector as sql
 import shutil
 
-main_path = '/mnt/c/diary ngoding/Test Telkom/pipeline mongo to mysql/JsonOutput/'
+main_path = '/mnt/c/diary ngoding/codex/pipeline mongo to mysql/JsonOutput/'
 filename = 'vaksin.json'
 path_json = os.path.join(main_path, filename)
 
@@ -34,11 +34,11 @@ def connection_mysql(user,db_name,password,host,port,df,tableName,path_json,file
         frame = df.to_sql(tableName, con=engine, if_exists='append', index=False)
     except ValueError as vx:
         print(vx)
-        shutil.move(path_json, os.path.join('/mnt/c/diary ngoding/Test Telkom/pipeline mongo to mysql/failed/',filename))
+        shutil.move(path_json, os.path.join('/mnt/c/codex/Test Telkom/pipeline mongo to mysql/failed/',filename))
         print("check data in failed folder")
     except Exception as ex:
         print(ex)
-        shutil.move(path_json, os.path.join('/mnt/c/diary ngoding/Test Telkom/pipeline mongo to mysql/failed/',filename))
+        shutil.move(path_json, os.path.join('/mnt/c/codex/Test Telkom/pipeline mongo to mysql/failed/',filename))
         print("check data in failed folder")
     else:
         print("Table %s created successfully."%tableName);
