@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  postgres:
+      image: postgres:9.6
+      environment:
+          - POSTGRES_USER=airflow
+          - POSTGRES_PASSWORD=airflow
+          - POSTGRES_DB=airflow
+      logging:
+        options:
+            max-size: 10m
+            max-file: "3"
+  
+  mysql:
+      image: mysql:5.7
+      container_name: mysql
+      environment:
+          MYSQL_DATABASE: 'root'
+          MYSQL_ROOT_PASSWORD: 'password'
+      ports:
+        - "3306:3306"
+      volumes:
+        - ./data/conf.d:/etc/mysql/conf.d
+        - ./data/logs:/logs
+        - /usr/local/var/mysql:/var/lib/mysql
+      logging:
+        options:
+            max-size: 10m
+            max-file: "3"
+
+  mongo:
+      container_name: mongo
+      image: mongo:4.2
+      ports:
+        - "27017:27017"
+      command: mongod
+      logging:
+        options:
+          max-size: 10m
+          max-file: "3"
